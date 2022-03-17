@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-    name: 'Delivery ',
+    name: 'Delivery Tracking',
     version: '1.0.0',
     env: process.env.NODE_ENV,
     port: process.env.PORT,
