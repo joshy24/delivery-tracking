@@ -1,6 +1,6 @@
 'use strict'
 
-//require ("dotenv").config()
+require ("dotenv").config()
 
 const express = require("express")
 
@@ -14,11 +14,21 @@ app.use(express.urlencoded({limit: '8mb', extended: false}));
 
 app.disable('x-powered-by');
 
+const config = require('./config/config');
+
+
+//Routes Setup
+const routes = require("./routes/index.routes")
+
+app.use('/api/v1', routes)
+
+
+//Setup port from environment or default
 const port = process.env.PORT || 4000
 
 app.listen(port, () => {
     log.info(`Server is running on port ${port}`)
-    
+
     /*mongoose.connect(config.db.uri, config.db.options)
         .then(()=> { log.info(`Succesfully Connected to the Mongodb Database  at URL : `+config.db.uri)})
         .catch((error)=> { log.error(error)})*/
