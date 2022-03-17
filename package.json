@@ -1,7 +1,7 @@
 {
   "name": "DeliveryTracking",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Delivery Tracking Service",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -13,13 +13,14 @@
     "Carbon",
     "Logistics"
   ],
-  "author": "",
+  "author": "Joshua Ajayi-Majebi",
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "bunyan": "^1.8.15",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
