@@ -28,7 +28,4 @@ const schema = new Schema({
     }
 })
 
-schema.index({email: 1, firstname: "text", lastname: "text"}, {unique:true});
-
-
 module.exports = mongoose.models[MODEL_NAME] || mongoose.model(MODEL_NAME, schema);

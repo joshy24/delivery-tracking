@@ -9,17 +9,18 @@ const mongoose = require('./modules/mongoose.module')
 
 const app = express()
 
-app.use(express.json({ type: 'application/json', limit: '8mb' }));
-app.use(express.urlencoded({limit: '8mb', extended: false}));
+app.use(express.json({ type: 'application/json' }));
+app.use(express.urlencoded({extended: false}));
 
 app.disable('x-powered-by');
 
+
+//App Config file
 const config = require('./config/config');
 
 
 //Routes Setup
 const routes = require("./routes/index.routes")
-
 app.use('/api/v1', routes)
 
 
