@@ -28,11 +28,12 @@ app.use('/api/v1', routes)
 const port = process.env.PORT || 4000
 
 app.listen(port, () => {
+
     log.info(`Server is running on port ${port}`)
 
-    /*mongoose.connect(config.db.uri, config.db.options)
-        .then(()=> { log.info(`Succesfully Connected to the Mongodb Database  at URL : `+config.db.uri)})
-        .catch((error)=> { log.error(error)})*/
+    mongoose.connect(config.db.uri, config.db.options)
+        .then(()=> { log.info(`Succesfully Connected to the Mongodb Database`)})
+        .catch((error)=> { log.error(error)})
 })
 
 

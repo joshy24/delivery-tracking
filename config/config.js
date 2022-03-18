@@ -9,8 +9,7 @@ module.exports = {
     db: {
         uri: process.env.DB_URL,
         options: {
-            useNewUrlParser: true, 
-            useCreateIndex: true,
+            useNewUrlParser: true,
             useUnifiedTopology: true
         }
     },
