@@ -79,11 +79,41 @@ module.exports.updateValidator = [
         .trim()
         .escape()
         .exists({checkFalsy: true, checkNull: true})
-        .isLength({min: 2, max: 1000}),
+        .withMessage('Invalid pick_up_address passed')
+        .bail()
+        .isLength({min: 2, max: 1000})
+        .withMessage('The pick_up_address passed is too long')
+        .bail(),
         
     param("destination_address")
         .trim()
         .escape()
         .exists({checkFalsy: true, checkNull: true})
+        .withMessage('Invalid destination_address passed')
+        .bail()
         .isLength({min: 2, max: 1000})
+        .withMessage('The destination_address passed is too long')
+        .bail()
+]
+
+module.exports.getPackageValidator = [
+    param("_id")
+        .trim()
+        .exists({checkFalsy: true, checkNull: true})
+        .withMessage('Invalid _id passed')
+        .bail()
+        .isLength({min: 20, max: 30})
+        .withMessage('Invalid _id passed')
+        .bail()
+]
+
+module.exports.deletePackageValidator = [
+    param("_id")
+        .trim()
+        .exists({checkFalsy: true, checkNull: true})
+        .withMessage('Invalid _id passed')
+        .bail()
+        .isLength({min: 20, max: 30})
+        .withMessage('Invalid _id passed')
+        .bail()
 ]

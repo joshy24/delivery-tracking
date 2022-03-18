@@ -1,6 +1,6 @@
 'use strict'
 
-const { savePackage, getAllPackages, getPackage, updatePackage } = require("../services/package.service");
+const { savePackage, getAllPackages, getPackage, updatePackage, deletePackage } = require("../services/package.service");
 
 const { getResponseMessage } = require("../modules/utils")
 
@@ -64,5 +64,5 @@ module.exports.updatePackage = async (req,res) => {
 }
 
 module.exports.deletePackage = async (req,res) => {
-
+    
 }

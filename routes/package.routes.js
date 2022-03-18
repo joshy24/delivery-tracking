@@ -1,7 +1,7 @@
 'use strict'
 
 const { createPackage, getAllPackages, getPackage, updatePackage, deletePackage } = require("../controllers/package.controller")
-const { createValidator, updateValidator } = require("../validators/package.validator")
+const { createValidator, updateValidator, deletePackageValidator, getPackageValidator } = require("../validators/package.validator")
 const validateRequestSchema = require("../middleware/validaterequestschema.middleware")
 
 module.exports = (router) => {
@@ -13,7 +13,7 @@ module.exports = (router) => {
         getAllPackages(req,res)
     })
 
-    router.get("/get_package/:id", (req,res) => {
+    router.get("/get_package/:id", getPackageValidator, validateRequestSchema, (req,res) => {
         getPackage(req,res)
     })
 
@@ -21,7 +21,7 @@ module.exports = (router) => {
         updatePackage(req,res)
     })
 
-    router.delete("/delete_package/:id", (req,res) => {
+    router.delete("/delete_package/:id", deletePackageValidator, validateRequestSchema, (req,res) => {
         deletePackage(req,res)
     })
 }
