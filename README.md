@@ -38,6 +38,7 @@ The service assumes that a package can be in one of 4 states is
 Flow
 
 - I assumed the following flow for the tracking of a package
+
 The package is PICKED_UP from the owners store or merchants store,
 then the package goes IN_TRANSIT when it is moved to a WARE_HOUSE.
 
