@@ -46,7 +46,7 @@ module.exports.getAllPackages = async () => {
 module.exports.updatePackage = async (id,data) => {
 
     try{
-        let updated_tracked_package = await TrackedPackage.findByIdAndUpdate({_id: id}, data)
+        let updated_tracked_package = await TrackedPackage.findByIdAndUpdate({_id: id}, data, { new: true })
         
         return updated_tracked_package;
     }
