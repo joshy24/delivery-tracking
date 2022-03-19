@@ -55,7 +55,7 @@ PICKED_UP status which also fulfills the constraint in the requirements.
 Assumptions :-
 
 - When a package is created the status is automatically set to PICKED_UP
-- A package can go from IN_TRANSIT status to WARE_HOUSE status mutiple times
+- A package can go from IN_TRANSIT status to WARE_HOUSE status mutiple times and vice versa
 - A package can only go from IN_TRANSIT to DELIVERED Once
 - When a package is DELIVERED it cannot go into any other status
 - Once a package has changed from PICKED_UP it cannot return back to the PICKED_UP status
