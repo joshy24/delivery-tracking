@@ -20,20 +20,6 @@ const isTrackedPackageStatusChangeable = (tracked_package, status_to_change_to) 
         }
     }
 
-    /*switch(tracked_package.status){
-        case statuses.PICKED_UP:
-            if(!change_options.PICKED_UP.includes(status_to_change_to)){
-                return false
-            }
-        break;
-        case status_options[1]:
-        break;
-        case status_options[2]:
-        break;
-        case status_options[3]:
-        break;
-    }*/
-
     return true;
 }
 

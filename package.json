@@ -2,11 +2,14 @@
   "name": "delivery-tracking",
   "version": "1.0.0",
   "description": "A Delivery Tracking Service",
-  "main": "index.js",
+  "main": "start.js",
   "scripts": {
-    "test": "jest",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "test": "jest --watch --detectOpenHandles",
+    "start": "node start.js",
+    "dev": "nodemon start.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [
     "Delivery Tracking",
@@ -18,7 +21,8 @@
   "devDependencies": {
     "faker": "^6.6.6",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   },
   "dependencies": {
     "bluebird": "^3.7.2",

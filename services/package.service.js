@@ -20,7 +20,7 @@ module.exports.savePackage = async (data) => {
 module.exports.getPackage = async (id) => {
 
     try{
-        let tracked_package = await TrackedPackage.find({_id: id})
+        let tracked_package = await TrackedPackage.findOne({_id: id})
 
         return tracked_package;
     }

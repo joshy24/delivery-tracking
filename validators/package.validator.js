@@ -1,4 +1,4 @@
-const { body,param } = require("express-validator")
+const { body,param, check } = require("express-validator")
 const { status_options } = require("../modules/status-options.module")
 const { isTrackedPackageStatusChangeable } = require("../modules/utils")
 const { getPackage } = require("../services/package.service")
@@ -36,28 +36,36 @@ module.exports.createValidator = [
 ];
 
 module.exports.updateValidator = [
-    param("status")
+    body("_id")
+        .trim()
         .exists({checkFalsy: true, checkNull: true})
-        .withMessage('Please enter a destination_address for the package')
+        .withMessage('Invalid _id passed, _id field must be present')
         .bail()
-        .not()
+        .isLength({min: 20, max: 30})
+        .withMessage('Invalid _id passed, max length exceeded')
+        .bail(),
+
+    body("status")
+        .exists({checkFalsy: true, checkNull: true})
+        .withMessage('Please enter a valid status for the package')
+        .bail()
         .isIn(status_options)
         .withMessage('Invalid status entered')
         .bail()
         .custom(async (value, {req}) => {
-        
             try{
-                let tracked_package = await getPackage(req.param._id)
+                let tracked_package = await getPackage(req.body._id)
 
                 if(!tracked_package)
                     throw new Error(`Package not found`)
 
                 if(tracked_package.status != value){
                     
-                    let isiChangeable = isTrackedPackageStatusChangeable(tracked_package, value) //We check if we can change the status of the package to the status in the request
+                    //We check if we can change the status of the package to the status in the request
+                    let isiChangeable = isTrackedPackageStatusChangeable(tracked_package, value) 
 
                     if(!isiChangeable){
-                        throw new Error(`Cant change status of package to ${req.param.status}`);
+                        throw new Error(`Cant change status of package to ${req.body.status}`);
                     }
                 }
             }
@@ -69,13 +77,17 @@ module.exports.updateValidator = [
             return true;
         }),
 
-    param("content")
+    body("content")
         .trim()
         .escape()
         .exists({checkFalsy: true, checkNull: true})
-        .isLength({min: 2, max: 1000}),
+        .withMessage('Invalid content entered')
+        .bail()
+        .isLength({min: 2, max: 1000})
+        .withMessage('Invalid content entered')
+        .bail(),
 
-    param("pick_up_address")
+    body("pick_up_address")
         .trim()
         .escape()
         .exists({checkFalsy: true, checkNull: true})
@@ -85,7 +97,7 @@ module.exports.updateValidator = [
         .withMessage('The pick_up_address passed is too long')
         .bail(),
         
-    param("destination_address")
+    body("destination_address")
         .trim()
         .escape()
         .exists({checkFalsy: true, checkNull: true})
@@ -114,6 +126,6 @@ module.exports.deletePackageValidator = [
         .withMessage('Invalid _id passed')
         .bail()
         .isLength({min: 20, max: 30})
-        .withMessage('Invalid _id passed')
+        .withMessage('Invalid _id passed, _id wrong length')
         .bail()
 ]

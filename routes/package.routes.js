@@ -13,15 +13,15 @@ module.exports = (router) => {
         getAllPackages(req,res)
     })
 
-    router.get("/get_package/:id", getPackageValidator, validateRequestSchema, (req,res) => {
+    router.get("/get_package/:_id", getPackageValidator, validateRequestSchema, (req,res) => {
         getPackage(req,res)
     })
 
-    router.put("/update_package", updateValidator, validateRequestSchema, (req,res) => {
+    router.post("/update_package", updateValidator, validateRequestSchema, (req,res) => {
         updatePackage(req,res)
     })
 
-    router.delete("/delete_package/:id", deletePackageValidator, validateRequestSchema, (req,res) => {
+    router.delete("/delete_package/:_id", deletePackageValidator, validateRequestSchema, (req,res) => {
         deletePackage(req,res)
     })
 }
