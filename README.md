@@ -152,6 +152,13 @@ created: Date
 
 To deploy this project 
 
+**Requirements:**
+
+```bash
+  Node installed
+  NPM installed
+```
+
 **clone repo:**
 
 ```bash
