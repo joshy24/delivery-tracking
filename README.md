@@ -86,8 +86,6 @@ created: Date
 
 ## API Reference
 
-basen url - http://localhost:4000
-
 #### Create a Package
 
 ```http
